@@ -12,6 +12,14 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
+// Импорт роутов для компетенций и категорий
+const competencyRoutes = require('./routes/competencyRoutes');
+// const categoryRoutes = require('./routes/categoryRoutes');
+
+// Подключение роутов
+app.use('/api/competencies', competencyRoutes); // Пути для работы с компетенциями
+// app.use('/categories', categoryRoutes);     // Пути для работы с категориями
+
 // Basic route
 app.get('/', (req, res) => {
     res.send('Server is running!');
