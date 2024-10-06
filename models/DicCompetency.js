@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
 
 const DicCompetencySchema = new mongoose.Schema({
+  _id: {
+    type: String,
+    default: () => uuidv4(), // Генерация UUID
+  },
   name: { type: String, required: true },
   description: { type: String },
   isActive: { type: Boolean, default: true },
